@@ -63,7 +63,10 @@ Run the segmentation process as follows.
 cd ./Organ_Segmentation_via_Foundation_Models/SAT
 torchrun --nproc_per_node=1 --master_port 1234 inference.py --rcd_dir './demo/inference_demo/results' --datasets_jsonl './abdomen_demo_MRI.jsonl' --vision_backbone 'UNET-L' --checkpoint './SAT-Pro-checkpoints/SAT_Pro.pth' --text_encoder 'ours' --text_encoder_checkpoint './SAT-Pro-checkpoints/text_encoder.pth' --max_queries 256 --batchsize_3d 1
 ```
-The SAT-Pro checkpoint is too large to upload in this project, you can download it in [here](https://pan.baidu.com/s/1YAAebtMBHsBxxhMQl4NEvA?pwd=m663 ) or [Huggingface](https://huggingface.co/zzh99/SAT/tree/main/Pro) uploaded by its author.
+
+Due to its large size, the SAT-Pro checkpoint file is not included in this repository. You can download it from the following sources:
+* [Here](https://pan.baidu.com/s/1YAAebtMBHsBxxhMQl4NEvA?pwd=m663)
+* [Huggingface](https://huggingface.co/zzh99/SAT/tree/main/Pro)
 
 For TotalSegmentator, install the needed packages as:
 ```
