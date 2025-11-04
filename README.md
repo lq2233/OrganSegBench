@@ -339,3 +339,15 @@ cd ./Multi-source_Knowledge_Distillation/Probabilistic_Distillation/Probabilisti
 python Test.py
 ```
 
+## License
+The code is licensed under the MITlicense.
+
+## Citation
+If you wang to cite this study, please use the following BibTeX entry.
+```
+@article{wang2025organsegbench,
+  title={OrganSegBench: A Comprehensive Multi-Organ Benchmark for Segmentation Foundation Models with a Practical Synergy Pathway to Clinical Application},
+  author={Wang, Chengyan and Li, Qing and Zhang, Yizhe and Guo, Xin and Zhang, Haosen and Li, Yan and Yang, Mo and Zhang, Yajing and Sun, Mengting and Sun, Longyu and others},
+  year={2025}
+}
+```
