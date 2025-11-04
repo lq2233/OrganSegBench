@@ -40,12 +40,12 @@ Prepare data for the foundation models: use 3D data (NII) for SAT and TotalSegme
 If you only want to run a single experiment on a model, execute the following command.
 For SAM2 or other other SAM-like models,install the needed packages as:
 ```
-cd ./Organ Segmentation via Foundation Models/SAM2
+cd ./Organ_Segmentation_via_Foundation_Models/SAM2
 pip install -r requirement.txt
 ```
 
 ```
-cd ./Organ Segmentation via Foundation Models/SAM2
+cd ./Organ_Segmentation_via_Foundation_Models/SAM2
 python SAM2.py
 ```
 The segmenttaion results for instances are shown as follows, where **a** denotes the source image, **b** denotes the annotation, **c** denotes the bounding box for segmentation and **d** denotes the segmentation masks.
@@ -53,25 +53,26 @@ The segmenttaion results for instances are shown as follows, where **a** denotes
 
 For SAT, install the needed packages as:
 ```
-cd ./Organ Segmentation via Foundation Models/SAT
+cd ./Organ_Segmentation_via_Foundation_Models/SAT
 pip install -r requirement.txt
 ```
 Generate the **json** file as ```chest_demo_CT.jsonl``` or ```abdomen_demo_MRI.jsonl``` via ```jsonl.ipynb```.
 
 Run the segmentation process as follows.
 ```
-cd ./Organ Segmentation via Foundation Models/SAT
+cd ./Organ_Segmentation_via_Foundation_Models/SAT
 torchrun --nproc_per_node=1 --master_port 1234 inference.py --rcd_dir './demo/inference_demo/results' --datasets_jsonl './abdomen_demo_MRI.jsonl' --vision_backbone 'UNET-L' --checkpoint './SAT-Pro-checkpoints/SAT_Pro.pth' --text_encoder 'ours' --text_encoder_checkpoint './SAT-Pro-checkpoints/text_encoder.pth' --max_queries 256 --batchsize_3d 1
 ```
+The SAT-Pro checkpoint is too large to upload in this project, you can download it in [here](https://pan.baidu.com/s/1YAAebtMBHsBxxhMQl4NEvA?pwd=m663 ) or [Huggingface](https://huggingface.co/zzh99/SAT/tree/main/Pro) uploaded by its author.
 
 For TotalSegmentator, install the needed packages as:
 ```
-cd ./Organ Segmentation via Foundation Models/TotalSegmentator
+cd ./Organ_Segmentation_via_Foundation_Models/TotalSegmentator
 pip install -r requirement.txt
 ```
 Run the segmentation process as follows.
 ```
-cd ./Organ Segmentation via Foundation Models/TotalSegmentator
+cd ./Organ_Segmentation_via_Foundation_Models/TotalSegmentator
 python TotalSegmentator.py
 ```
 
@@ -171,25 +172,25 @@ In contrast to the traditional reliance on metrics such as DSC and HD, we analyz
 ### Step 1: Install the needed packages
 Install the needed packages.
 ```
-cd ./Segmentation Error Distribution Computation
+cd ./Segmentation_Error_Distribution_Computation
 pip install -r requirement.txt
 ```
 ### Step 2: Data processing
 Transform the Nifit format data into the STL format data, further into the point cloud.
 ```
-cd ./Segmentation Error Distribution Computation
+cd ./Segmentation_Error_Distribution_Computation
 python NII2STL.py
 python STL2PointCloud.py
 ```
 ### Step 3: Computing segmentation error distribution per subject
 ```
-cd ./Segmentation Error Distribution Computation
+cd ./Segmentation_Error_Distribution_Computation
 python Distance.py
 ```
 ### Step 4: Computing the overall segmentation error distribution among subjects
 All above 4 steps are integrated in to the main code, as shown in follows:
 ```
-cd ./Segmentation Error Distribution Computation
+cd ./Segmentation_Error_Distribution_Computation
 python Main.py
 ```
 ![Error_distribution](https://github.com/lq2233/OrganSegBench/blob/main/4_1.png)
@@ -206,14 +207,14 @@ To improve the performance and cost-effectiveness of SFMs for clinical deploymen
 #### 1. install needed packages for the model deployment.
 For UNet,
 ```
-cd ./Multi-source Knowledge Distillation/Deterministic Distillation/UNet/
+cd ./Multi-source_Knowledge_Distillation/Deterministic_Distillation/UNet/
 pip -r requirement.txt
 ```
 
 For HSNet,
 
 ```
-cd ./Multi-source Knowledge Distillation/Deterministic Distillation/HSNet/
+cd ./Multi-source_Knowledge_Distillation/Deterministic_Distillation/HSNet/
 pip -r requirement.txt
 ```
 
@@ -223,7 +224,7 @@ Using pancreas as the instance, For training set, collect the AVG fusion of mask
 
 The training set should be arranged as follows.
 ```bash
-./Multi-source Knowledge Distillation/Deterministic Distillation/HSNet/DataSet_Segmentation/TrainDataset-pancreas/
+./Multi-source_Knowledge_Distillation/Deterministic_Distillation/HSNet/DataSet_Segmentation/TrainDataset-pancreas/
 ├── images/
 │   ├── 0.png
 │   └── 1.png
@@ -236,7 +237,7 @@ For test set, the manual annotations are collected for performance evaluation.
 The test set should be arranged as follows, where **ID** is used to identify the subject for further performance assessment.
 
 ```bash
-./Multi-source Knowledge Distillation/Deterministic Distillation/HSNet/DataSet_Segmentation/TestDataset-pancreas/
+./Multi-source_Knowledge_Distillation/Deterministic_Distillation/HSNet/DataSet_Segmentation/TestDataset-pancreas/
 ├── images/
 │   ├── ID_0.png
 │   └── ID_1.png
@@ -248,26 +249,26 @@ The test set should be arranged as follows, where **ID** is used to identify the
 If you finished to prepare the dataset, you can execute the following command for training.
 For UNet,
 ```
-cd ./Multi-source Knowledge Distillation/Deterministic Distillation/UNet/
+cd ./Multi-source_Knowledge_Distillation/Deterministic_Distillation/UNet/
 python training_model.py
 ```
 For HSNet,
 ```
-cd ./Multi-source Knowledge Distillation/Deterministic Distillation/HSNet/
+cd ./Multi-source_Knowledge_Distillation/Deterministic_Distillation/HSNet/
 python training_model.py
 ```
 #### 4. Valid the trained student model
 
-For UNet，using the checkpoint provided in ```./Multi-source Knowledge Distillation/Deterministic Distillation/UNet/model_path_EDRV_for_test/EDRV/``` as an example，you can execute the folloewing command for validation.
+For UNet，using the checkpoint provided in ```./Multi-source_Knowledge_Distillation/Deterministic_Distillation/UNet/model_path_EDRV_for_test/EDRV/``` as an example，you can execute the folloewing command for validation.
 ```
-cd ./Multi-source Knowledge Distillation/Deterministic Distillation/UNet/
+cd ./Multi-source_Knowledge_Distillation/Deterministic_Distillation/UNet/
 python test.py
 python DSC_Calculation.py
 python HD_Calculation.py
 ```
-For HSNet，using the checkpoint provided in ```./Multi-source Knowledge Distillation/Deterministic Distillation/HSNet/model_pth_pancreas_for_test/PolypPVT_pancreas/``` as an example，you can execute the folloewing command for validation.
+For HSNet，using the checkpoint provided in ```./Multi-source_Knowledge_Distillation/Deterministic_Distillation/HSNet/model_pth_pancreas_for_test/PolypPVT_pancreas/``` as an example，you can execute the folloewing command for validation.
 ```
-cd ./Multi-source Knowledge Distillation/Deterministic Distillation/HSNet/
+cd ./Multi-source_Knowledge_Distillation/Deterministic_Distillation/HSNet/
 python test.py
 python DSC_Calculation.py
 python HD_Calculation.py
@@ -277,7 +278,7 @@ python HD_Calculation.py
 
 #### 1. install needed packages for the model deployment.
 ```
-cd ./Multi-source Knowledge Distillation/Probabilistic Distillation/Probabilistic UNet/
+cd ./Multi-source_Knowledge_Distillation/Probabilistic_Distillation/Probabilistic_UNet/
 pip -r requirement.txt
 ```
 #### 2. Prepare the training/test set.
@@ -286,7 +287,7 @@ Using Aorta(AO) as the instance, for training set, collect the masks generated b
 
 The training set should be arranged as follows.
 ```bash
-./Multi-source Knowledge Distillation/Probabilistic Distillation/Probabilistic UNet/Data_Sample/TrainDataset/AO/
+./Multi-source_Knowledge_Distillation/Probabilistic_Distillation/Probabilistic_UNet/Data_Sample/TrainDataset/AO/
 ├── /ID_0
 │   ├── images
 │      └── image_ID_0.png
@@ -312,7 +313,7 @@ For test set, the manual annotations are collected for performance evaluation.
 
 The test set should be arranged as follows.
 ```bash
-./Multi-source Knowledge Distillation/Probabilistic Distillation/Probabilistic UNet/Data_Sample/TestDataset/AO/
+./Multi-source_Knowledge_Distillation/Probabilistic_Distillation/Probabilistic_UNet/Data_Sample/TestDataset/AO/
 ├── /ID_0
 │    ├── image_ID_0.png
 │    └── label_ID_0.png
@@ -325,13 +326,13 @@ The test set should be arranged as follows.
 #### 3. Training the student model
 If you finished to prepare the dataset, you can execute the following command for training.
 ```
-cd ./Multi-source Knowledge Distillation/Probabilistic Distillation/Probabilistic UNet/
+cd ./Multi-source_Knowledge_Distillation/Probabilistic_Distillation/Probabilistic_UNet/
 python Training_Model.py
 ```
 #### 4. Valid the trained student model
-Using the checkpoint provided in ```./Multi-source Knowledge Distillation/Probabilistic Distillation/Probabilistic UNet/Model_path_test/AO/``` as an example，you can execute the folloewing command for validation.
+Using the checkpoint provided in ```./Multi-source_Knowledge_Distillation/Probabilistic_Distillation/Probabilistic_UNet/Model_path_test/AO/``` as an example，you can execute the folloewing command for validation.
 ```
-cd ./Multi-source Knowledge Distillation/Probabilistic Distillation/Probabilistic UNet/
+cd ./Multi-source_Knowledge_Distillation/Probabilistic_Distillation/Probabilistic_UNet/
 python Test.py
 ```
 
