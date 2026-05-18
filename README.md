@@ -1,5 +1,5 @@
 # OrganSegBench
-OrganSegBench: Benchmarking and Enhancing Segmentation Foundation Models for Clinical Reliability
+OrganSegBench: Bridging the Translational Gap for Medical Segmentation Foundation Models Through Principled Model Synergy
 - Organ segmentation via foundation models
 - Model performance evaluation
 - Segmentation Error Distribution Computation
