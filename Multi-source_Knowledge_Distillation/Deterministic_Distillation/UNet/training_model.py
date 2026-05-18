@@ -215,7 +215,7 @@ if __name__ == '__main__':
     # params = model.parameters()
 
     if opt.optimizer == 'AdamW':
-        optimizer = torch.optim.Adam(net.parameters(), lr=lr, weight_decay=l2_reg)
+        optimizer = torch.optim.AdamW(net.parameters(), lr=lr, weight_decay=l2_reg)
         secheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=lr_decay_every, gamma=lr_decay)
     else:
         optimizer = torch.optim.SGD(net.parameters(), opt.lr, weight_decay=1e-4, momentum=0.9)
