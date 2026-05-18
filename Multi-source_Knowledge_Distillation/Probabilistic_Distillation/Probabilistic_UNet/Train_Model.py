@@ -57,7 +57,7 @@ net = ProbabilisticUnet(input_channels=1, num_classes=1, num_filters=[32,64,128,
 net.cuda()
 
 # optimizer
-optimizer = torch.optim.Adam(net.parameters(), lr=lr, weight_decay=l2_reg)
+optimizer = torch.optim.AdamW(net.parameters(), lr=lr, weight_decay=l2_reg)
 secheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=lr_decay_every, gamma=lr_decay)
 
 # logging
