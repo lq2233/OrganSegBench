@@ -197,7 +197,7 @@ if __name__ == '__main__':
     parser.add_argument('--train_save', type=str,
                         default='./model_pth_saEDRV/' + model_name + '/')
     lr = 1e-4
-    l2_reg = 1e-4
+    l2_reg = 1e-5
     lr_decay_every = 200
     lr_decay = 0.95
     opt = parser.parse_args()
