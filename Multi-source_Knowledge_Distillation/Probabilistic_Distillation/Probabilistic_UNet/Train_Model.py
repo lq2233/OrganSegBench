@@ -12,12 +12,12 @@ import pickle
 import os
 from medpy.metric.binary import dc, hd, hd95
 # optimization settings
-lr = 1e-5
-l2_reg = 1e-6
+lr = 1e-4
+l2_reg = 1e-5
 lr_decay_every = 200   # decay LR after this many epochs
 lr_decay = 0.95
 
-batch_size_train = 5
+batch_size_train = 20
 batch_size_val = 1
 epochs = 1000
 
