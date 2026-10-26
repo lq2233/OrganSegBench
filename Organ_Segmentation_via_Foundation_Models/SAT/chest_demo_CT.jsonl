@@ -1,0 +1,4 @@
+{"image": "./data_tosegmented/data_ct//01190626V001.nii.gz", "label": ["lung"], "modality": "MRI", "dataset": "chest"}
+{"image": "./data_tosegmented/data_ct//01190718V003.nii.gz", "label": ["lung"], "modality": "MRI", "dataset": "chest"}
+{"image": "./data_tosegmented/data_ct//01200408V005.nii.gz", "label": ["lung"], "modality": "MRI", "dataset": "chest"}
+{"image": "./data_tosegmented/data_ct//01200514V002.nii.gz", "label": ["lung"], "modality": "MRI", "dataset": "chest"}

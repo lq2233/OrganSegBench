@@ -1,0 +1,4 @@
+{"image": "./data_tosegmented/data_mri//01190626V001.nii.gz", "label": ["liver"], "modality": "MRI", "dataset": "abdomen"}
+{"image": "./data_tosegmented/data_mri//01190718V003.nii.gz", "label": ["liver"], "modality": "MRI", "dataset": "abdomen"}
+{"image": "./data_tosegmented/data_mri//01200408V005.nii.gz", "label": ["liver"], "modality": "MRI", "dataset": "abdomen"}
+{"image": "./data_tosegmented/data_mri//01200514V002.nii.gz", "label": ["liver"], "modality": "MRI", "dataset": "abdomen"}

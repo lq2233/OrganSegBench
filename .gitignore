@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+
+# Model weights (not distributed; reproduce by training or download public backbones)
+*.pth
+*.pt
+*.ckpt
+
+# Inference outputs / training artifacts.
+# NOTE: do NOT add a global "*.png" rule - the example train/val/test data
+# under DataSet_Segmentation / Data_Sample are .png and must be committable.
+result_map/
+UNetoutputs/
+Output/
+loss_train.png
+logging.txt
+
+# 3D data are not redistributed
+*.nii.gz
+*.npy
+
+# Logs / OS
+*.log
+.DS_Store
