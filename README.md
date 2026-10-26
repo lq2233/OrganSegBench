@@ -200,7 +200,8 @@ python Main.py
 
 ## 4. Multi-source Knowledge Distillation - How to start
 To improve the performance and cost-effectiveness of SFMs for clinical deployment, we introduce two ensemble strategies: training-free fusion and multi-source knowledge distillation. This work extends our **[MICCAI 2025](https://link.springer.com/chapter/10.1007/978-3-032-04937-7_19)** publication, where we choose **UNet** (CNN-base) and **HSNet** (ViT-base) as the student models for **Deterministic Distillation** and **Probabilistic UNet** for **Probabilistic Distillation**.
-Within each cohort, **subjects** (not 2D slices) were split into training/validation/test at **4:1:5**, stratified by gender, age group and BMI group. All slices from one subject stay in the same subset so there is no subject leakage across subsets. The validation set is used only to monitor training (not for early stopping or model selection), and the test set is kept fully isolated. Each slice is named `<subjectID>_<slice>.png` so its subject is explicit.
+Within each cohort, **subjects** (not 2D slices) were split into training/validation/test at **4:1:5**, stratified by gender, age group and BMI group. All slices from one subject stay in the same subset so there is no subject leakage across subsets. The validation set is used only to monitor training (not for early stopping or model selection), and the test set is kept fully isolated. All released example slices are organised into subject-disjoint training/validation/test subsets; in the probabilistic-distillation examples and the test sets, each slice is additionally named `<subjectID>_<slice>.png` so that its subject is directly visible from the filename.
+
 
 ![Error_distribution](https://github.com/lq2233/OrganSegBench/blob/main/Distillation.png)
 
