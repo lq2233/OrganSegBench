@@ -163,9 +163,11 @@ Denote $$V_{EDLV}$$, $$V_{EDRV}$$, $$V_{ESLV}$$, $$V_{ESRV}$$ as the volume (mL)
 |$$LVEF =\frac{LVSV}{LVEDV}×100$$|
 |$$RVEF =\frac{RVSV}{RVEDV}×100$$|
 |$$LVCO = LVSV×alpha×10^-3$$|
-|$$alpha = 60.0×\frac{cycle}{duration}$$|
+|$$alpha = 60.0\cycle\duration$$|
 
-The $$\frac{cycle}{duration}$$ represents the number for complete heartbeat round in a second and can be read from the header file of the ‘NIFTI’ data.
+duration: Temporal interval between consecutive cardiac phases (s)
+cycle: Number of cardiac phases in one complete cardiac cycle
+alpha: Heart rate (beats/min), calculated as 60/(duration × cycle)
 
 For other organs, we calculated the volume from the groundtruth mask ($$VGT$$) and the model’s segmentation ($$\overline{V}$$) to derive
 the Volume Error Rate, $$VER = \frac{|VGT - \overline{V}|}{VGT}$$.
