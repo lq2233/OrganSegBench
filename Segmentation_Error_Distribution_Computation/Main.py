@@ -1,3 +1,7 @@
+# Aligned version of the uploaded Main.py.
+# Fixes point-cloud identity, zero initialization, effective sample counting,
+# and color normalization. Paths, surface sampling size, clipping, and
+# registration procedure are otherwise preserved.
 import time
 
 import open3d as o3d
@@ -185,7 +189,7 @@ def draw_distance(pcd, distance):
     min1 = np.min(distance)
 
     color_select = ['red', 'orange', 'yellow', 'green', 'blue']
-    len1 = (max1 - min1) / (max1 - min1)
+    len1 = 1.0
     step = len1 / (len(color_select) - 1)
     red1 = 0
 
@@ -223,32 +227,9 @@ def draw_distance(pcd, distance):
     plt.tight_layout()
     plt.show()
 
-    # 初始化颜色
-    color_green = [[0.0, 1.0, 0.0]]
-    color_green_list = np.tile(color_green, (len(distance), 1))
-    pcd.colors = o3d.utility.Vector3dVector(color_green_list)
-
-    print(cmap.N)  # 256
-    color_list = [[cmap(i)[0], cmap(i)[1], cmap(i)[2]] for i in range(cmap.N)]
-    print(color_list)
-
-
-    # 设置将dists设置成256个段
-
-    step_distance = (max1 - min1) / 255
-    for i in range(len(distance)):
-        index = color_index(distance[i], step_distance)
-        this_red = cmap(index)[0]
-        this_green = cmap(index)[1]
-        this_blue = cmap(index)[2]
-        # 改变颜色
-        this_Color = np.asarray(pcd.colors)
-
-        this_Color[i, 0] = this_red
-        this_Color[i, 1] = this_green
-        this_Color[i, 2] = this_blue
-
-    pcd.colors = o3d.utility.Vector3dVector(this_Color)
+    # Use exactly the same normalization as the displayed colorbar.
+    rgba = cmap(norm(np.asarray(distance, dtype=float)))
+    pcd.colors = o3d.utility.Vector3dVector(rgba[:, :3])
     o3d.visualization.draw_geometries([pcd])
 
 import os
@@ -366,18 +347,17 @@ if __name__ == "__main__":
     path_target_model ="./reference/label_liver.stl"
     Num = 1000000
     target_label_pcd = read_stl_2_cloud(path_target_label, N= Num)
-    target_model_pcd = read_stl_2_cloud(path_target_model, N= Num)
     print(np.asarray(target_label_pcd.points).shape)
     # distance
-    dists_target = target_label_pcd.compute_point_cloud_distance(target_model_pcd)  # 计算点云与点云之间的距离
-    dists_target = np.asarray(dists_target)
+    # Accumulate errors at fixed reference points, starting from zero.
+    dists_target = np.zeros(len(target_label_pcd.points), dtype=np.float64)
 
     # draw_distance(target_label_pcd, dists_target)
 
     # IDs = ['01190626V001', '01200408V001', '01190718V003']
 
     IDs = sorted(os.listdir('./Sample_Data/STL/'))
-    count = 1
+    count = 0
     result = []
 
     yingshe = []
@@ -430,9 +410,9 @@ if __name__ == "__main__":
         result.append(np.mean(dists_source))
         #################################################
 
-        target_pcd = read_stl_2_cloud("./reference/label_liver.stl", N= Num)
-
-        source_pcd = read_stl_2_cloud("./Sample_Data/STL/"+id+"/Label_liver.stl", N= Num)
+        # Reuse exactly the point clouds associated with the accumulator and errors.
+        target_pcd = target_label_pcd
+        source_pcd = source_label_pcd
 
         # 执行配准
         estimated_transform, source_pcd, target_pcd, transformed_pcd = registration_pipeline(source_pcd, target_pcd)
@@ -459,7 +439,9 @@ if __name__ == "__main__":
     ###################################################################
     print('10 items', np.mean(result))
     ###################################################################
-    dists_target = dists_target/ count
+    if count == 0:
+        raise ValueError("No samples were processed; the averaged error field is undefined.")
+    dists_target = dists_target / count
 
     # counter = dict(Counter(yingshe))
     # for key in counter:  # 取平均
