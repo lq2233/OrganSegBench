@@ -98,6 +98,7 @@ Given DSC_group and HD95_group as the performance lists for the subjects on spec
 ```
 import numpy as np
 def Cases_identify(DSC_group, HD95_group, metric='DSC'):
+  scores = DSC_group if metric=='DSC' else HD95_group
   n = max(1, int(len(scores) * 0.05))
   Idx_DSC_lower5 = np.argsort(scores)[:n]
   Idx_HD95_lower5 = np.argsort(scores)[::-1][:n]
