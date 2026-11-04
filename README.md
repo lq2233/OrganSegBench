@@ -164,7 +164,7 @@ Denote $$V_{EDLV}$$, $$V_{EDRV}$$, $$V_{ESLV}$$, $$V_{ESRV}$$ as the volume (mL)
 |$$LVEF =\frac{LVSV}{LVEDV}×100$$|
 |$$RVEF =\frac{RVSV}{RVEDV}×100$$|
 |$$LVCO = LVSV×alpha×10^-3$$|
-|$$alpha = 60/(\cycle\times\duration)$$|
+|$$alpha = \frac{60}{cycle\timesduration}$$|
 
 duration: Temporal interval between consecutive cardiac phases (s)
 cycle: Number of cardiac phases in one complete cardiac cycle
