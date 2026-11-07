@@ -25,7 +25,7 @@ OrganSegBench: Bridging the Translational Gap for Medical Segmentation Foundatio
 |SAM|ViT-H SAM|https://github.com/facebookresearch/segment-anything|
 |SAM2|SAM2.1_HIERA_LARGE|https://github.com/facebookresearch/sam2/tree/main?tab=readme-ov-file|
 |MedSAM|MedSAM_VIT_B|https://drive.google.com/drive/folders/1ETWmi4AiniJeWOt6HAsYgTjYv_fkgzoN|
-|MedSAM2|SAM2.1_HIERA_TINY|https://github.com/bowang-lab/MedSAM2?tab=readme-ov-file|
+|MedSAM2|MedSAM2_latest|https://github.com/bowang-lab/?tab=readme-ov-file|
 |SAT|SAT-PRO|https://huggingface.co/zzh99/SAT/tree/main/Pro|
 |TotalSegmentator|TotalSegmentator V2|https://github.com/wasserth/TotalSegmentator|
 
