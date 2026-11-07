@@ -118,8 +118,8 @@ from thop import profile
 sys.path.append("./segment-anything-2")
 sys.path.append("./segment-anything-2/checkpoints")
 sys.path.append("./segment-anything-2/sam2_configs")
-sam2_checkpoint = "./segment-anything-2/checkpoints/sam2.1_hiera_tiny.pt"
-model_cfg = "sam2.1_hiera_t.yaml" # 只能用文件名，不可以用路径，所以要事先添加path
+sam2_checkpoint = "./segment-anything-2/checkpoints/MedSAM2_latest.pt" # sam2.1_hiera_tiny
+model_cfg = "sam2.1_hiera_t.yaml" # 
 
 sam2_model = build_sam2(model_cfg, sam2_checkpoint, device=device)
 
@@ -135,7 +135,7 @@ IDs=['01190626V001']
 organ_heart = []
 for ID in IDs:
         print(ID)
-    # if not os.path.exists("/cpfs01/projects-HDD/cfff-6117e6302119_HDD/wangchengyan/segment-anything-2/"+ID+"/DICE_SAM2_MRI.xlsx"):
+    # if not os.path.exists("./segment-anything-2/"+ID+"/DICE_SAM2_MRI.xlsx"):
         result_dice = []
         result_dice.append(ID)
         organs = ['spleen','liver', 'kidney', 'pancreas', 'IVC']
