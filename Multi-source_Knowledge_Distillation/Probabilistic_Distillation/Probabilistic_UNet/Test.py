@@ -21,7 +21,8 @@ cpk_directory = './Model_path_test/AO/'     # checkpoint saved here by Train_Mod
 print('Using the trained model from directory: ', cpk_directory)
 if not os.path.exists(cpk_directory):
     raise ValueError('Please specify the out_dir in visualize.py which contains the trained model dict')
-
+if not os.path.exists('./Output/'):
+    os.mkdir(./Output/)
 out_dir = './Output/AO/'  # results will be saved in 'out_dir/visual_results'
 
 
