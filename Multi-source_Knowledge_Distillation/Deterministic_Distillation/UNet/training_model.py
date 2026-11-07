@@ -19,7 +19,7 @@ def adjust_lr(optimizer, decay_rate=0.1):
 
 
 out_dir = './model_path_EDRV_for_test/EDRV/'
-
+os.makedirs(out_dir, exist_ok=True)
 
 def structure_loss(pred, mask):
     bce = F.binary_cross_entropy_with_logits(pred, mask, reduction='mean')
