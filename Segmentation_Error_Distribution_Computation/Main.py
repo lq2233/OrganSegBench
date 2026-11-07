@@ -341,10 +341,10 @@ def mls_upsampling(pcd, radius=0.05, upsampling_ratio=2.0):
     return upsampled_pcd
 if __name__ == "__main__":
 
-    path_target = "./reference/label_liver.stl"
-    path_target_label = "./reference/label_liver.stl"
+    path_target = "./Reference/label_liver.stl"
+    path_target_label = "./Reference/label_liver.stl"
     # path_target_label = "C:/Users/acer/Desktop/pointcloud_data/demo_data_liver/01190718V009/LABEL_liver.stl"
-    path_target_model ="./reference/label_liver.stl"
+    path_target_model ="./Reference/label_liver.stl"
     Num = 1000000
     target_label_pcd = read_stl_2_cloud(path_target_label, N= Num)
     print(np.asarray(target_label_pcd.points).shape)
